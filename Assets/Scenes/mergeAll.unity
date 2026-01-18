@@ -6379,9 +6379,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d74ba4dbc03c94da6d43ef2fd877af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomLoader
+  gridRoot: {fileID: 0}
   player: {fileID: 1596944307}
   roomPrefabs:
   - {fileID: 8185341305990768252, guid: c09a457bbc37fa24186d3bd22b8e1058, type: 3}
+  clampPlayerToBounds: 1
+  clampMin: {x: -8, y: -4}
+  clampMax: {x: 8, y: 4}
 --- !u!4 &1870198072
 Transform:
   m_ObjectHideFlags: 0
