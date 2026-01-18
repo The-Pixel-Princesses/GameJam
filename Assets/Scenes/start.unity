@@ -148,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a35945e6569b3b44aaf2d7a12b63d5cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SceneLoader
-  gameSceneName: Game
+  gameSceneName: key-fix
 --- !u!4 &44730486
 Transform:
   m_ObjectHideFlags: 0

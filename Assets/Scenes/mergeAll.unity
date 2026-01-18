@@ -2717,10 +2717,7 @@ MonoBehaviour:
   - Conservatory
   - Patio
   stableRooms: []
-  maxTorchesPerRoom: 4
-  roomLoader: {fileID: 1870198071}
   debugPrintOnStart: 1
-  debugPrintOnReshuffle: 1
 --- !u!4 &727662605
 Transform:
   m_ObjectHideFlags: 0
@@ -5461,7 +5458,6 @@ MonoBehaviour:
   fireforce: 10
   shootCooldown: 0.25
   shootTimer: 0.5
-  animator: {fileID: 1596944310}
 --- !u!114 &1596944313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6379,13 +6375,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09d74ba4dbc03c94da6d43ef2fd877af, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RoomLoader
+  enableDebugRoomJump: 1
+  debugRoomOrder: []
   gridRoot: {fileID: 0}
   player: {fileID: 1596944307}
   roomPrefabs:
   - {fileID: 8185341305990768252, guid: c09a457bbc37fa24186d3bd22b8e1058, type: 3}
-  clampPlayerToBounds: 1
-  clampMin: {x: -8, y: -4}
-  clampMax: {x: 8, y: 4}
+  startRoomId: Start
+  startEnteredFrom: 2
+  doorInwardOffset: 1
+  floorSearchRadius: 10
+  floorCellCenterOffset: {x: 0.5, y: 0.5, z: 0}
 --- !u!4 &1870198072
 Transform:
   m_ObjectHideFlags: 0
