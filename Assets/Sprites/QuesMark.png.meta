@@ -1,16 +1,13 @@
 fileFormatVersion: 2
-guid: f38ca4ef400f84c4c897fd56d3799345
+guid: 64fe3b3a3a73eec41b23bbc067fa0fd6
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5921654803111049709
-    second: Untitled-1 - Copy (2)_0
+      213: -7564533806108869184
+    second: QuesMark_0
   - first:
-      213: 5097731563993946354
-    second: Untitled-1 - Copy (2)_1
-  - first:
-      213: 4526170357743993334
-    second: Untitled-1 - Copy (2)_2
+      213: -7256756222273324828
+    second: QuesMark_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,7 +55,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 135, y: 67, z: 127, w: 84}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -102,84 +99,49 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Untitled-1 - Copy (2)_0
+      name: QuesMark_0
       rect:
         serializedVersion: 2
-        x: 141
-        y: 76
-        width: 16
-        height: 20
+        x: 153
+        y: 570
+        width: 972
+        height: 1410
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: de97bed4ba1fd2250800000000000000
-      internalID: 5921654803111049709
+      spriteID: 0cd727bf490650790800000000000000
+      internalID: -7564533806108869184
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Untitled-1 - Copy (2)_1
+      name: QuesMark_1
       rect:
         serializedVersion: 2
-        x: 156
-        y: 76
-        width: 17
-        height: 15
+        x: 465
+        y: 113
+        width: 297
+        height: 297
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2f8d72839d7ceb640800000000000000
-      internalID: 5097731563993946354
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Untitled-1 - Copy (2)_2
-      rect:
-        serializedVersion: 2
-        x: 173
-        y: 76
-        width: 17
-        height: 20
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 6f1cb3ea5ff20de30800000000000000
-      internalID: 4526170357743993334
+      spriteID: 4e8facde9a2da4b90800000000000000
+      internalID: -7256756222273324828
       vertices: []
       indices: 
       edges: []
@@ -189,7 +151,7 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -198,9 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Untitled-1 - Copy (2)_0: 5921654803111049709
-      Untitled-1 - Copy (2)_1: 5097731563993946354
-      Untitled-1 - Copy (2)_2: 4526170357743993334
+      QuesMark_0: -7564533806108869184
+      QuesMark_1: -7256756222273324828
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

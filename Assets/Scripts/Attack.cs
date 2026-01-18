@@ -48,7 +48,7 @@ public class Attack : MonoBehaviour
         {
             Melee.SetActive(true);
             isAttacking = true;
-            //call animator?
+            animator.SetTrigger("Melee");
         }
     }
 

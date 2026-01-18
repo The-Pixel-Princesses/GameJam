@@ -25,6 +25,6 @@ public class SceneLoader : MonoBehaviour
     public void QuitGame()
     {
         Debug.Log("[SceneLoader] Quit requested.");
-        Application.Quit();
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }
