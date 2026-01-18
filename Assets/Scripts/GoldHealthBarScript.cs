@@ -27,7 +27,7 @@ public class GoldHealthBarScript : MonoBehaviour
         }
         else
         {
-            Debug.Log("Draining");
+            //Debug.Log("Draining");
             currentValue -= drainRate * Time.deltaTime;
         }
 

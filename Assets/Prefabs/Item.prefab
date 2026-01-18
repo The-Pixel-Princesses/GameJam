@@ -185,5 +185,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::Item
   itemName: Key
   quantity: 3
-  sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  appScript: {fileID: 0}
+  sprite: {fileID: 8207866534588276938, guid: a33b096421f3a934fb56cf3174e1a82a, type: 3}

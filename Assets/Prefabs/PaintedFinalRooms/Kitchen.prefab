@@ -154,11 +154,10 @@ MonoBehaviour:
   chestId: 4
   closedSprite: {fileID: -6191958229592508617, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
   openSprite: {fileID: 5966800672889261488, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
-  player: {fileID: 0}
   interactDistance: 3
+  itemSpawnPoint: {fileID: 8602088856837877999}
   room: {fileID: 0}
   isMimic: 1
-  itemSpawnPoint: {fileID: 8602088856837877999}
 --- !u!1 &1205959212758244002
 GameObject:
   m_ObjectHideFlags: 0
@@ -603,6 +602,7 @@ MonoBehaviour:
   doorEName: Door_E
   doorSName: Door_S
   doorWName: Door_W
+  keyItemPrefab: {fileID: 5836940840583518204, guid: 7b753138531bc504a90bf8b2ce211174, type: 3}
 --- !u!1 &4244240593175073071
 GameObject:
   m_ObjectHideFlags: 0
@@ -823,11 +823,10 @@ MonoBehaviour:
   chestId: 3
   closedSprite: {fileID: -6191958229592508617, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
   openSprite: {fileID: 5966800672889261488, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
-  player: {fileID: 0}
   interactDistance: 3
+  itemSpawnPoint: {fileID: 1950416477598046177}
   room: {fileID: 0}
   isMimic: 1
-  itemSpawnPoint: {fileID: 1950416477598046177}
 --- !u!1 &5928138943494615634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1327,11 +1326,10 @@ MonoBehaviour:
   chestId: 2
   closedSprite: {fileID: -6191958229592508617, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
   openSprite: {fileID: 5966800672889261488, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
-  player: {fileID: 0}
   interactDistance: 3
+  itemSpawnPoint: {fileID: 92771762598496504}
   room: {fileID: 0}
   isMimic: 1
-  itemSpawnPoint: {fileID: 92771762598496504}
 --- !u!1 &8942137750587906192
 GameObject:
   m_ObjectHideFlags: 0
@@ -1486,11 +1484,10 @@ MonoBehaviour:
   chestId: 1
   closedSprite: {fileID: -6191958229592508617, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
   openSprite: {fileID: 5966800672889261488, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
-  player: {fileID: 0}
   interactDistance: 3
+  itemSpawnPoint: {fileID: 6269010317934253015}
   room: {fileID: 0}
   isMimic: 1
-  itemSpawnPoint: {fileID: 6269010317934253015}
 --- !u!1001 &1289963100455007052
 PrefabInstance:
   m_ObjectHideFlags: 0

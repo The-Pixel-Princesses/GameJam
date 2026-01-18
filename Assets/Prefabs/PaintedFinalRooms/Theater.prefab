@@ -319,6 +319,7 @@ MonoBehaviour:
   doorEName: Door_E
   doorSName: Door_S
   doorWName: Door_W
+  keyItemPrefab: {fileID: 5836940840583518204, guid: 7b753138531bc504a90bf8b2ce211174, type: 3}
 --- !u!1 &5616820619767272406
 GameObject:
   m_ObjectHideFlags: 0

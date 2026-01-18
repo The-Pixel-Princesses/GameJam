@@ -13,49 +13,68 @@ public class Chest : MonoBehaviour
     public Sprite openSprite;
 
     [Header("Interaction")]
-    public Transform player;
     public float interactDistance = 3f;
 
-    [Header("Assigned by roomController")]
+    [Header("Spawn")]
+    public Transform itemSpawnPoint;
+
+    [Header("Runtime (wired automatically)")]
     [HideInInspector] public roomController room;
     [HideInInspector] public bool isMimic = true;
-    public Transform itemSpawnPoint;
-    private bool opened;
-    private SpriteRenderer sr;
-    private Camera mainCam;
 
-    void Awake()
+    private RoomLoader _loader;
+    private Transform _player;
+    private bool _opened;
+    private SpriteRenderer _sr;
+    private Camera _mainCam;
+
+    public void Initialize(roomController ownerRoom, RoomLoader loader)
     {
-        sr = GetComponent<SpriteRenderer>();
-        mainCam = Camera.main;
-
-        sr.sprite = closedSprite;
+        room = ownerRoom;
+        _loader = loader;
     }
 
-    void Update()
+    private void Awake()
     {
-        if (opened) return;
-        if (Mouse.current == null || mainCam == null) return;
+        _sr = GetComponent<SpriteRenderer>();
+        _mainCam = Camera.main;
+        SetOpenedVisual(false);
+    }
 
-        if (Mouse.current.leftButton.wasPressedThisFrame)
-        {
-            Vector2 mouseWorld = mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            Collider2D hit = Physics2D.OverlapPoint(mouseWorld);
-            if (hit == null) return;
+    private void Start()
+    {
+        // auto-find player if not wired
+        var playerObj = GameObject.FindGameObjectWithTag("Player");
+        if (playerObj != null) _player = playerObj.transform;
 
-            if (hit.transform != transform && !hit.transform.IsChildOf(transform)) return;
+        // failsafe if Initialize didn't run yet
+        if (room == null) room = GetComponentInParent<roomController>();
+        if (_loader == null) _loader = FindFirstObjectByType<RoomLoader>();
+    }
 
-            if (player != null && Vector2.Distance(player.position, transform.position) > interactDistance)
-                return;
+    private void Update()
+    {
+        if (_opened) return;
+        if (Mouse.current == null || _mainCam == null) return;
 
-            Interact();
-        }
+        if (!Mouse.current.leftButton.wasPressedThisFrame) return;
+
+        Vector2 mouseWorld = _mainCam.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+        Collider2D hit = Physics2D.OverlapPoint(mouseWorld);
+
+        if (hit == null) return;
+        if (hit.transform != transform && !hit.transform.IsChildOf(transform)) return;
+
+        if (_player != null && Vector2.Distance(_player.position, transform.position) > interactDistance)
+            return;
+
+        Interact();
     }
 
     private void Interact()
     {
-        opened = true;
-        sr.sprite = openSprite;
+        _opened = true;
+        SetOpenedVisual(true);
 
         if (room == null)
         {
@@ -67,46 +86,45 @@ public class Chest : MonoBehaviour
         {
             Debug.Log($"[Chest] Mimic triggered in room {room.roomId} (chestId={chestId})");
             // TODO: spawn bats / combat
+            return;
         }
-        else
-{ }}
-    // REAL chest: spawn key item prefab exactly once
-   //     var loader = FindFirstObjectByType<RoomLoader>();
-        //var state = loader != null ? loader.GetRoomState(room.roomId) : null;
 
-        // if (state != null && state.keyCollected)
-        // {
-        //     Debug.Log("[Chest] Key already collected for this room.");
-        //     return;
-        // }
+        // REAL chest: spawn key once per roomId
+        if (_loader == null)
+        {
+            Debug.LogWarning("[Chest] RoomLoader missing; cannot persist keyCollected.");
+            return;
+        }
 
-        // if (room.keyItemPrefab == null)
-        // {
-        //     Debug.LogError("[Chest] keyItemPrefab not assigned on roomController.");
-        //     return;
-        // }
+        var state = _loader.GetRoomState(room.roomId);
+        if (state.keyCollected)
+        {
+            Debug.Log($"[Chest] Key already collected for room {room.roomId}.");
+            return;
+        }
 
-        // if (itemSpawnPoint == null)
-        // {
-        //     Debug.LogError("[Chest] itemSpawnPoint not assigned.");
-        //     return;
-        // }
+        if (room.keyItemPrefab == null)
+        {
+            Debug.LogError("[Chest] keyItemPrefab not assigned on roomController.");
+            return;
+        }
 
-        //Instantiate(room.keyItemPrefab, itemSpawnPoint.position, Quaternion.identity);
+        if (itemSpawnPoint == null)
+        {
+            Debug.LogError("[Chest] itemSpawnPoint not assigned on Chest.");
+            return;
+        }
 
-        // Mark collected so it won't spawn again
-    //     if (state != null) state.keyCollected = true;
+        Instantiate(room.keyItemPrefab, itemSpawnPoint.position, Quaternion.identity);
+        state.keyCollected = true;
 
-    //     Debug.Log($"[Chest] Spawned key item from real chest in room {room.roomId}");
-    // }
-
- //   }
+        Debug.Log($"[Chest] Spawned key from real chest in room {room.roomId}");
+    }
 
     public void SetOpenedVisual(bool open)
     {
-        opened = open;
-        sr.sprite = open ? openSprite : closedSprite;
+        _opened = open;
+        if (_sr == null) _sr = GetComponent<SpriteRenderer>();
+        _sr.sprite = open ? openSprite : closedSprite;
     }
-
-    
 }

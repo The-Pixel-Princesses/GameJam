@@ -4,7 +4,26 @@ using UnityEngine.Tilemaps;
 
 public class RoomLoader : MonoBehaviour
 {
- [Header("Scene Grid")]
+
+    [Header("Debug")]
+    public bool enableDebugRoomJump = true;
+
+    [Tooltip("Rooms mapped to keys 1–9 (index 0 = key 1, index 8 = key 9)")]
+    public List<string> debugRoomOrder = new();
+
+    // roomId -> simple persistent state
+    private readonly Dictionary<string, RoomState> _stateByRoomId = new();
+
+    public RoomState GetRoomState(string roomId)
+    {
+        if (!_stateByRoomId.TryGetValue(roomId, out var state))
+        {
+            state = new RoomState();
+            _stateByRoomId[roomId] = state;
+        }
+        return state;
+    }
+    [Header("Scene Grid")]
     public Transform gridRoot;
 
     [Header("Player")]
@@ -177,4 +196,35 @@ public class RoomLoader : MonoBehaviour
 
         return desiredWorld;
     }
+private void Update()
+{
+    if (!enableDebugRoomJump) return;
+
+    // Keys 1–9
+    for (int i = 0; i < debugRoomOrder.Count && i < 9; i++)
+    {
+        KeyCode key = KeyCode.Alpha1 + i;
+
+        if (Input.GetKeyDown(key))
+        {
+            string roomId = debugRoomOrder[i];
+
+            if (string.IsNullOrWhiteSpace(roomId))
+            {
+                Debug.LogWarning($"[RoomLoader][Debug] No roomId assigned for key {i + 1}");
+                continue;
+            }
+
+            if (!_prefabById.ContainsKey(roomId))
+            {
+                Debug.LogError($"[RoomLoader][Debug] Room '{roomId}' not found in RoomLoader.roomPrefabs");
+                continue;
+            }
+
+            Debug.Log($"[RoomLoader][Debug] Jumping to room '{roomId}' via key {i + 1}");
+            LoadRoom(roomId, Direction.S); // default enter-from
+        }
+    }
+}
+
 }

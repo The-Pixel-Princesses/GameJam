@@ -17,6 +17,8 @@ public class roomController : MonoBehaviour
 
     public Tilemap Floor { get; private set; }
 
+    public GameObject keyItemPrefab;
+
     private Transform _doorN, _doorE, _doorS, _doorW;
 
     private void Awake()
@@ -61,15 +63,24 @@ public class roomController : MonoBehaviour
         return null;
     }
 
-    private void Start()
-    {
-        // When this room is instantiated, automatically wire all doors inside it.
-        var loader = FindFirstObjectByType<RoomLoader>();
-        var router = FindFirstObjectByType<MansionRouter>(); // or MansionRouter
+private void Start()
+{
+    // Find shared scene systems once
+    var loader = FindFirstObjectByType<RoomLoader>();
+    var router = FindFirstObjectByType<MansionRouter>(); // or MansionRouter_Minimal
 
-        foreach (var door in GetComponentsInChildren<Door_Debug>(true))
-        {
-            door.Initialize(this, loader, router);
-        }
+    // Wire chests
+    foreach (var chest in GetComponentsInChildren<Chest>(true))
+    {
+        chest.Initialize(this, loader);
     }
+
+    // Wire doors (use Door, not Door_Debug, unless you're still debugging)
+    foreach (var door in GetComponentsInChildren<Door_Debug>(true))
+
+    {
+        door.Initialize(this, loader, router);
+    }
+}
+
 }
