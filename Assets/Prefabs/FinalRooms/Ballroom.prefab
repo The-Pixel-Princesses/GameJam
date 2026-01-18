@@ -159,37 +159,6 @@ MonoBehaviour:
   room: {fileID: 0}
   isMimic: 1
   itemSpawnPoint: {fileID: 8602088856837877999}
---- !u!1 &455885633254433486
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1622423008649142147}
-  m_Layer: 0
-  m_Name: W
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1622423008649142147
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 455885633254433486}
-  serializedVersion: 2
-  m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: -45.2, y: 54.4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4860963897564142593}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1205959212758244002
 GameObject:
   m_ObjectHideFlags: 0
@@ -330,6 +299,7 @@ MonoBehaviour:
   onSprite: {fileID: 4791548942556819327, guid: d3cb5257556f8014289a1c6e8b1d0946, type: 3}
   offSprite: {fileID: 3097743895570586354, guid: e39919330b593ad4da6af6a6f128ee68, type: 3}
   player: {fileID: 0}
+  playerTag: Player
   interactDistance: 3
 --- !u!61 &6224187475024717184
 BoxCollider2D:
@@ -403,37 +373,6 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
   m_LocalPosition: {x: 8.55, y: -4.99, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4860963897564142593}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &3192511860454174570
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 8827061181037784238}
-  m_Layer: 0
-  m_Name: E
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &8827061181037784238
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3192511860454174570}
-  serializedVersion: 2
-  m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 57.7, y: 5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -548,6 +487,7 @@ MonoBehaviour:
   onSprite: {fileID: 4791548942556819327, guid: d3cb5257556f8014289a1c6e8b1d0946, type: 3}
   offSprite: {fileID: 3097743895570586354, guid: e39919330b593ad4da6af6a6f128ee68, type: 3}
   player: {fileID: 0}
+  playerTag: Player
   interactDistance: 3
 --- !u!61 &9101211446557853582
 BoxCollider2D:
@@ -620,19 +560,15 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4183465737737167672}
   serializedVersion: 2
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
-  m_LocalPosition: {x: -0.6, y: -1.15, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6269010317934253015}
-  - {fileID: 7019293651848825853}
   - {fileID: 92771762598496504}
-  - {fileID: 8827061181037784238}
   - {fileID: 1950416477598046177}
-  - {fileID: 1622423008649142147}
   - {fileID: 8602088856837877999}
-  - {fileID: 976902893355299316}
   - {fileID: 2170720538015569639}
   - {fileID: 6903580495963860867}
   - {fileID: 857756414538333323}
@@ -648,7 +584,7 @@ Transform:
   - {fileID: 8617076220456967208}
   - {fileID: 1262578327329737832}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &-1140499708464590081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -662,10 +598,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::roomController
   roomId: Ballroom
-  enterFromN: {fileID: 7019293651848825853}
-  enterFromE: {fileID: 8827061181037784238}
-  enterFromS: {fileID: 976902893355299316}
-  enterFromW: {fileID: 1622423008649142147}
+  enterFromN: {fileID: 0}
+  enterFromE: {fileID: 0}
+  enterFromS: {fileID: 0}
+  enterFromW: {fileID: 0}
   doorsRoot: {fileID: 0}
   torchesRoot: {fileID: 0}
   chestsRoot: {fileID: 4244240593175073071}
@@ -895,37 +831,6 @@ MonoBehaviour:
   room: {fileID: 0}
   isMimic: 1
   itemSpawnPoint: {fileID: 1950416477598046177}
---- !u!1 &5180245666538261744
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 7019293651848825853}
-  m_Layer: 0
-  m_Name: N
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &7019293651848825853
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5180245666538261744}
-  serializedVersion: 2
-  m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: -11.8, y: -59.4, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4860963897564142593}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5928138943494615634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1035,6 +940,7 @@ MonoBehaviour:
   onSprite: {fileID: 4791548942556819327, guid: d3cb5257556f8014289a1c6e8b1d0946, type: 3}
   offSprite: {fileID: 3097743895570586354, guid: e39919330b593ad4da6af6a6f128ee68, type: 3}
   player: {fileID: 0}
+  playerTag: Player
   interactDistance: 3
 --- !u!61 &3170240997138833721
 BoxCollider2D:
@@ -1191,6 +1097,7 @@ MonoBehaviour:
   onSprite: {fileID: 4791548942556819327, guid: d3cb5257556f8014289a1c6e8b1d0946, type: 3}
   offSprite: {fileID: 3097743895570586354, guid: e39919330b593ad4da6af6a6f128ee68, type: 3}
   player: {fileID: 0}
+  playerTag: Player
   interactDistance: 3
 --- !u!61 &7979870546279071266
 BoxCollider2D:
@@ -1428,37 +1335,6 @@ MonoBehaviour:
   room: {fileID: 0}
   isMimic: 1
   itemSpawnPoint: {fileID: 92771762598496504}
---- !u!1 &8842717837399505743
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 976902893355299316}
-  m_Layer: 0
-  m_Name: S
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &976902893355299316
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8842717837399505743}
-  serializedVersion: 2
-  m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 52.1, y: 57.9, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 4860963897564142593}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8942137750587906192
 GameObject:
   m_ObjectHideFlags: 0

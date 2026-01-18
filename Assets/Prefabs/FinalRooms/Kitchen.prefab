@@ -330,6 +330,7 @@ MonoBehaviour:
   onSprite: {fileID: 4791548942556819327, guid: d3cb5257556f8014289a1c6e8b1d0946, type: 3}
   offSprite: {fileID: 3097743895570586354, guid: e39919330b593ad4da6af6a6f128ee68, type: 3}
   player: {fileID: 0}
+  playerTag: Player
   interactDistance: 1
 --- !u!61 &6224187475024717184
 BoxCollider2D:
@@ -517,6 +518,7 @@ MonoBehaviour:
   onSprite: {fileID: 4791548942556819327, guid: d3cb5257556f8014289a1c6e8b1d0946, type: 3}
   offSprite: {fileID: 3097743895570586354, guid: e39919330b593ad4da6af6a6f128ee68, type: 3}
   player: {fileID: 0}
+  playerTag: Player
   interactDistance: 1
 --- !u!61 &9101211446557853582
 BoxCollider2D:
@@ -590,7 +592,7 @@ Transform:
   m_GameObject: {fileID: 4183465737737167672}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.6, y: -1.15, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -631,14 +633,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::roomController
   roomId: Kitchen
-  enterFromN: {fileID: 8207534783282650395}
-  enterFromE: {fileID: 3839280066116447189}
-  enterFromS: {fileID: 3977887214599473024}
-  enterFromW: {fileID: 6023018017318905954}
-  doorsRoot: {fileID: 0}
-  torchesRoot: {fileID: 0}
-  chestsRoot: {fileID: 4244240593175073071}
-  keyItemPrefab: {fileID: 5836940840583518204, guid: 7b753138531bc504a90bf8b2ce211174, type: 3}
+  floorTilemapName: Tilemap Floor
+  doorNName: Door_N
+  doorEName: Door_E
+  doorSName: Door_S
+  doorWName: Door_W
 --- !u!1 &4244240593175073071
 GameObject:
   m_ObjectHideFlags: 0
@@ -1004,6 +1003,7 @@ MonoBehaviour:
   onSprite: {fileID: 4791548942556819327, guid: d3cb5257556f8014289a1c6e8b1d0946, type: 3}
   offSprite: {fileID: 3097743895570586354, guid: e39919330b593ad4da6af6a6f128ee68, type: 3}
   player: {fileID: 0}
+  playerTag: Player
   interactDistance: 1
 --- !u!61 &3170240997138833721
 BoxCollider2D:
@@ -1160,6 +1160,7 @@ MonoBehaviour:
   onSprite: {fileID: 4791548942556819327, guid: d3cb5257556f8014289a1c6e8b1d0946, type: 3}
   offSprite: {fileID: 3097743895570586354, guid: e39919330b593ad4da6af6a6f128ee68, type: 3}
   player: {fileID: 0}
+  playerTag: Player
   interactDistance: 1
 --- !u!61 &7979870546279071266
 BoxCollider2D:
@@ -5744,14 +5745,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 654140550186945767, guid: 46da5a7ab5210444095f4db64205475d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2668153006413904092}
+      addedObject: {fileID: 6788017653755267787}
   m_SourcePrefab: {fileID: 100100000, guid: 46da5a7ab5210444095f4db64205475d, type: 3}
 --- !u!1 &1798387364555997099 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 654140550186945767, guid: 46da5a7ab5210444095f4db64205475d, type: 3}
   m_PrefabInstance: {fileID: 1289963100455007052}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2668153006413904092
+--- !u!114 &6788017653755267787
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5760,13 +5761,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 1798387364555997099}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c662968630d81ee4a9ddd5746c7dd27c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6275e72d35adf9e44add00d233d40a92, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Door
-  exitDirection: 3
-  room: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Door_Debug
+  thisRoomId: 
+  exitDirection: 0
   loader: {fileID: 0}
-  destinationProviderComponent: {fileID: 0}
+  routerComponent: {fileID: 0}
 --- !u!4 &2654197038973018794 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3833483290658607590, guid: 46da5a7ab5210444095f4db64205475d, type: 3}
@@ -39945,7 +39946,7 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 654140550186945767, guid: 46da5a7ab5210444095f4db64205475d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2413571575809480411}
+      addedObject: {fileID: 4143010305912381184}
   m_SourcePrefab: {fileID: 100100000, guid: 46da5a7ab5210444095f4db64205475d, type: 3}
 --- !u!4 &2117639502773134909 stripped
 Transform:
@@ -39957,7 +39958,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 654140550186945767, guid: 46da5a7ab5210444095f4db64205475d, type: 3}
   m_PrefabInstance: {fileID: 2904849618778634203}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2413571575809480411
+--- !u!114 &4143010305912381184
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -39966,13 +39967,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2397005765113609020}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c662968630d81ee4a9ddd5746c7dd27c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6275e72d35adf9e44add00d233d40a92, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Door
+  m_EditorClassIdentifier: Assembly-CSharp::Door_Debug
+  thisRoomId: 
   exitDirection: 0
-  room: {fileID: 0}
   loader: {fileID: 0}
-  destinationProviderComponent: {fileID: 0}
+  routerComponent: {fileID: 0}
 --- !u!1001 &4527270274877664621
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44185,14 +44186,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 654140550186945767, guid: 46da5a7ab5210444095f4db64205475d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 5490710060903043238}
+      addedObject: {fileID: 2598901852397742161}
   m_SourcePrefab: {fileID: 100100000, guid: 46da5a7ab5210444095f4db64205475d, type: 3}
 --- !u!1 &6457812671838097751 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 654140550186945767, guid: 46da5a7ab5210444095f4db64205475d, type: 3}
   m_PrefabInstance: {fileID: 5804360596488936880}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &5490710060903043238
+--- !u!114 &2598901852397742161
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -44201,13 +44202,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 6457812671838097751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c662968630d81ee4a9ddd5746c7dd27c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6275e72d35adf9e44add00d233d40a92, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Door
-  exitDirection: 2
-  room: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Door_Debug
+  thisRoomId: 
+  exitDirection: 0
   loader: {fileID: 0}
-  destinationProviderComponent: {fileID: 0}
+  routerComponent: {fileID: 0}
 --- !u!4 &7331437481300413526 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3833483290658607590, guid: 46da5a7ab5210444095f4db64205475d, type: 3}
@@ -48343,14 +48344,14 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 654140550186945767, guid: 46da5a7ab5210444095f4db64205475d, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 438939226353733857}
+      addedObject: {fileID: 1812075236829673624}
   m_SourcePrefab: {fileID: 100100000, guid: 46da5a7ab5210444095f4db64205475d, type: 3}
 --- !u!1 &5850029113515505865 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 654140550186945767, guid: 46da5a7ab5210444095f4db64205475d, type: 3}
   m_PrefabInstance: {fileID: 6358100976189748270}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &438939226353733857
+--- !u!114 &1812075236829673624
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -48359,13 +48360,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 5850029113515505865}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c662968630d81ee4a9ddd5746c7dd27c, type: 3}
+  m_Script: {fileID: 11500000, guid: 6275e72d35adf9e44add00d233d40a92, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Door
-  exitDirection: 1
-  room: {fileID: 0}
+  m_EditorClassIdentifier: Assembly-CSharp::Door_Debug
+  thisRoomId: 
+  exitDirection: 0
   loader: {fileID: 0}
-  destinationProviderComponent: {fileID: 0}
+  routerComponent: {fileID: 0}
 --- !u!4 &7858719333449508296 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3833483290658607590, guid: 46da5a7ab5210444095f4db64205475d, type: 3}

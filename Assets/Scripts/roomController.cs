@@ -1,121 +1,75 @@
-using System.Collections.Generic;
 using UnityEngine;
-
-public enum Direction { N, E, S, W }
+using UnityEngine.Tilemaps;
 
 public class roomController : MonoBehaviour
 {
     [Header("Room Identity")]
-    public string roomId; // e.g. "Start", "LibraryA"
+    public string roomId;
 
-    [Header("Entry Spawn Points")]
-    public Transform enterFromN;
-    public Transform enterFromE;
-    public Transform enterFromS;
-    public Transform enterFromW;
+    [Header("Tilemap Names (adjust if yours differ)")]
+    public string floorTilemapName = "Tilemap Floor";
 
-    [Header("Optional groups (for organization)")]
-    public GameObject doorsRoot;
-    public GameObject torchesRoot;
-    public GameObject chestsRoot;
+    [Header("Door Object Names (must exist as children somewhere in the prefab)")]
+    public string doorNName = "Door_N";
+    public string doorEName = "Door_E";
+    public string doorSName = "Door_S";
+    public string doorWName = "Door_W";
 
-    public GameObject keyItemPrefab;
+    public Tilemap Floor { get; private set; }
 
-    // You can expand later to store torch/chest components, etc.
-    public Transform GetEntryPoint(Direction enteredFrom)
+    private Transform _doorN, _doorE, _doorS, _doorW;
+
+    private void Awake()
     {
-        return enteredFrom switch
+        // Cache doors (by name)
+        _doorN = FindDeepChild(transform, doorNName);
+        _doorE = FindDeepChild(transform, doorEName);
+        _doorS = FindDeepChild(transform, doorSName);
+        _doorW = FindDeepChild(transform, doorWName);
+
+        // Cache floor tilemap (by name)
+        var floorTr = FindDeepChild(transform, floorTilemapName);
+        if (floorTr != null) Floor = floorTr.GetComponent<Tilemap>();
+
+        if (Floor == null)
+            Debug.LogWarning($"[RoomController] Floor Tilemap not found in '{name}'. Expected child named '{floorTilemapName}'.");
+    }
+
+    public Transform GetDoorTransform(Direction side)
+    {
+        return side switch
         {
-            Direction.N => enterFromN,
-            Direction.E => enterFromE,
-            Direction.S => enterFromS,
-            Direction.W => enterFromW,
-            _ => enterFromS
+            Direction.N => _doorN,
+            Direction.E => _doorE,
+            Direction.S => _doorS,
+            Direction.W => _doorW,
+            _ => null
         };
     }
 
-    void Awake()
-{
-        // Wire chests to this room
-    foreach (var chest in GetComponentsInChildren<Chest>(true))
+    // Finds a child recursively by name (works for nested hierarchies)
+    private static Transform FindDeepChild(Transform parent, string childName)
     {
-        chest.room = this;
+        if (parent == null) return null;
+
+        foreach (Transform child in parent)
+        {
+            if (child.name == childName) return child;
+            var result = FindDeepChild(child, childName);
+            if (result != null) return result;
+        }
+        return null;
     }
 
-    var loader = FindFirstObjectByType<RoomLoader>();
-    var router = FindFirstObjectByType<MansionRouter>(); // or DebugDestinationProvider for now
-
-    foreach (var door in GetComponentsInChildren<Door>(true))
+    private void Start()
     {
-        door.room = this;
-        door.loader = loader;
-        door.destinationProviderComponent = router;
+        // When this room is instantiated, automatically wire all doors inside it.
+        var loader = FindFirstObjectByType<RoomLoader>();
+        var router = FindFirstObjectByType<MansionRouter>(); // or MansionRouter
+
+        foreach (var door in GetComponentsInChildren<Door_Debug>(true))
+        {
+            door.Initialize(this, loader, router);
+        }
     }
-
-    if (enterFromN == null || enterFromE == null || enterFromS == null || enterFromW == null)
-        Debug.LogWarning($"[roomController] Missing entry spawn points in room '{roomId}' on '{gameObject.name}'.");
-}
-
-public void ApplyState(RoomState state)
-{
-    var chests = chestsRoot.GetComponentsInChildren<Chest>(true);
-
-    if (chests.Length != 4)
-    {
-        Debug.LogError($"[Room] {roomId} expected 4 chests, found {chests.Length}");
-        return;
-    }
-
-    // Assign randomized IDs ONCE
-    if (state.chestIdByIndex == null || state.chestIdByIndex.Length != 4)
-    {
-        state.chestIdByIndex = new int[] { 0, 1, 2, 3 };
-        Shuffle(state.chestIdByIndex);
-    }
-
-    for (int i = 0; i < 4; i++)
-    {
-        chests[i].room = this;
-        chests[i].chestId = state.chestIdByIndex[i];
-    }
-
-    // Pick real chest slot ONCE
-    if (state.realChestIndex < 0 || state.realChestIndex > 3)
-        state.realChestIndex = Random.Range(0, 4);
-
-    for (int i = 0; i < 4; i++)
-        chests[i].isMimic = (i != state.realChestIndex);
-}
-
-private void Shuffle(int[] arr)
-{
-    for (int i = arr.Length - 1; i > 0; i--)
-    {
-        int j = Random.Range(0, i + 1);
-        (arr[i], arr[j]) = (arr[j], arr[i]);
-    }
-}
-
-public void OnRealChestOpened()
-{
-    // Get the persistent state for THIS room from the loader
-    var loader = FindFirstObjectByType<RoomLoader>();
-    if (loader == null)
-    {
-        Debug.LogError("[Room] No RoomLoader found.");
-        return;
-    }
-
-    var state = loader.GetRoomState(roomId);
-    if (state.keyCollected)
-    {
-        Debug.Log("[Room] Key already collected here.");
-        return;
-    }
-
-    state.keyCollected = true;
-    Debug.Log($"[Room] Key collected in room {roomId}");
-}
-
-
 }

@@ -1,39 +1,63 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
-[RequireComponent(typeof(Collider2D))]
-public class Door : MonoBehaviour
+public class RoomController_Simple : MonoBehaviour
 {
-    public Direction exitDirection;
+    [Header("Room Identity")]
+    public string roomId;
 
-    // These get assigned automatically by roomController (recommended)
-    [HideInInspector] public roomController room;
-    [HideInInspector] public RoomLoader loader;
-    [HideInInspector] public MonoBehaviour destinationProviderComponent;
+    [Header("Tilemap Names (adjust if yours differ)")]
+    public string floorTilemapName = "Tilemap Floor";
 
-    private IDestinationProvider Provider => (IDestinationProvider)destinationProviderComponent;
+    [Header("Door Object Names (must exist as children somewhere in the prefab)")]
+    public string doorNName = "Door_N";
+    public string doorEName = "Door_E";
+    public string doorSName = "Door_S";
+    public string doorWName = "Door_W";
 
-    void Reset()
+    public Tilemap Floor { get; private set; }
+
+    private Transform _doorN, _doorE, _doorS, _doorW;
+
+    private void Awake()
     {
-        GetComponent<Collider2D>().isTrigger = true;
+        // Cache doors (by name)
+        _doorN = FindDeepChild(transform, doorNName);
+        _doorE = FindDeepChild(transform, doorEName);
+        _doorS = FindDeepChild(transform, doorSName);
+        _doorW = FindDeepChild(transform, doorWName);
+
+        // Cache floor tilemap (by name)
+        var floorTr = FindDeepChild(transform, floorTilemapName);
+        if (floorTr != null) Floor = floorTr.GetComponent<Tilemap>();
+
+        if (Floor == null)
+            Debug.LogWarning($"[RoomController_Simple] Floor Tilemap not found in '{name}'. Expected child named '{floorTilemapName}'.");
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public Transform GetDoorTransform(Direction side)
     {
-        if (!other.CompareTag("Player")) return;
-        Debug.Log($"[Door] Entered {room.roomId} via {exitDirection}");
-
-        if (room == null || loader == null || destinationProviderComponent == null) return;
-
-        string nextRoomId = Provider.GetDestinationRoomId(room.roomId, exitDirection);
-        loader.LoadRoom(nextRoomId, Opposite(exitDirection));
+        return side switch
+        {
+            Direction.N => _doorN,
+            Direction.E => _doorE,
+            Direction.S => _doorS,
+            Direction.W => _doorW,
+            _ => null
+        };
     }
 
-    private Direction Opposite(Direction d) => d switch
+    // Finds a child recursively by name (works for nested hierarchies)
+    private static Transform FindDeepChild(Transform parent, string childName)
     {
-        Direction.N => Direction.S,
-        Direction.S => Direction.N,
-        Direction.E => Direction.W,
-        Direction.W => Direction.E,
-        _ => Direction.S
-    };
+        if (parent == null) return null;
+
+        foreach (Transform child in parent)
+        {
+            if (child.name == childName) return child;
+            var result = FindDeepChild(child, childName);
+            if (result != null) return result;
+        }
+        return null;
+    }
 }
