@@ -5443,7 +5443,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5552641da8a042347b2f972121623305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  slider: {fileID: 0}
+  slider: {fileID: 1826152173}
 --- !u!114 &1826152173
 MonoBehaviour:
   m_ObjectHideFlags: 0
