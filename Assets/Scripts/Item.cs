@@ -5,7 +5,7 @@ public class Item : MonoBehaviour
     [SerializeField] private string itemName;
     [SerializeField] private int quantity;
     [SerializeField] private Sprite sprite;
-    [SerializeField] private ApplicationScript appScript;
+    private ApplicationScript appScript;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     //void Start()
@@ -18,7 +18,7 @@ public class Item : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            appScript.AddItem(itemName, quantity, sprite);
+            ApplicationScript.Instance.AddItem(itemName, quantity, sprite);
             Destroy(gameObject);
         }
     }

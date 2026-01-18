@@ -79,4 +79,12 @@ public class ApplicationScript : MonoBehaviour
         return false; // item not found
     }
 
+    public static ApplicationScript Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
+
 }

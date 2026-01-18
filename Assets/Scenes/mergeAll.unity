@@ -822,7 +822,6 @@ MonoBehaviour:
   itemName: Key
   quantity: 3
   sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  appScript: {fileID: 336898813}
 --- !u!61 &201514950
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1756,10 +1755,10 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 336898812}
   - {fileID: 1820392776}
   - {fileID: 931848607}
   - {fileID: 1826152171}
+  - {fileID: 336898812}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
