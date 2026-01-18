@@ -5,12 +5,11 @@ public class PlayerHealth : MonoBehaviour
     public int maxHealth = 10;
     private int currentHealth;
     public RedHealthBarScript healthBar;
-    Vector2 startPos;
+    public Transform respawnPoint;
     public Animator animator;
 
     void Start()
     {
-        startPos = transform.position;
         currentHealth = maxHealth;
         healthBar.SetMaxHealth(maxHealth);
     }
@@ -43,7 +42,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Respawn()
     {
-        transform.position = startPos;
+        transform.position = respawnPoint.position;
         currentHealth = maxHealth;
         healthBar.SetHealth(currentHealth);
         animator.SetBool("isDead", false);
