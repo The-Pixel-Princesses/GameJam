@@ -12,6 +12,9 @@ public class BatScript : MonoBehaviour
 
     public int damage = 1;
 
+    [SerializeField] private Animator animator;
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,7 +37,10 @@ public class BatScript : MonoBehaviour
             moveDirection = direction;
 
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-            rb.rotation = angle; 
+            rb.rotation = angle;
+
+            animator.SetFloat("MoveX", moveDirection.x);
+            animator.SetFloat("MoveY", moveDirection.y);
         }
     }
 
