@@ -3968,15 +3968,15 @@ MonoBehaviour:
   gridRoot: {fileID: 501716861}
   player: {fileID: 1596944307}
   roomPrefabs:
-  - {fileID: 4183465737737167672, guid: 1567610da925ab743aa2d073f7bb05bf, type: 3}
-  - {fileID: 4183465737737167672, guid: 2c05b7a9bf890334c9d6aa23227753d4, type: 3}
-  - {fileID: 4183465737737167672, guid: c0799476d34f5be4883bd50eedd0c67d, type: 3}
-  - {fileID: 4183465737737167672, guid: d0c0bed88d84eca4faa109d18fb7b654, type: 3}
-  - {fileID: 4183465737737167672, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
-  - {fileID: 4183465737737167672, guid: 6996b9318f5dc60479f32efc33c64cc5, type: 3}
-  - {fileID: 4183465737737167672, guid: 1d3a302b3e1d61a4f99ba2460b2294ef, type: 3}
-  - {fileID: 4183465737737167672, guid: ea174e9655a4a4f4ca02a0e87dbf47f6, type: 3}
-  - {fileID: 4183465737737167672, guid: 42fbeea404d402f46b615c49badbe739, type: 3}
+  - {fileID: 5451387327189475033, guid: 08dafdbc4f902c64290e8bb0af2e043b, type: 3}
+  - {fileID: 4109137158465955469, guid: 267f8e860639188499424f590ccd6da8, type: 3}
+  - {fileID: 6662772297210539715, guid: 62fbf9c442efb694bbf3fdb5bd7de37e, type: 3}
+  - {fileID: 4291462230791700637, guid: 72605e8157e78ec45af669280b367f8e, type: 3}
+  - {fileID: 4183465737737167672, guid: de2ad67b4c4128b4bab8dc57fb2b7422, type: 3}
+  - {fileID: 2551653001858484330, guid: 4159dc5dbeca9b04eb99505e9b8f763d, type: 3}
+  - {fileID: 759744058381616705, guid: dd4b076595656b349a2889933ecb0a83, type: 3}
+  - {fileID: 8244559890238966171, guid: 81dd8716257c7304cbdf8f34dcea35c7, type: 3}
+  - {fileID: 5593644728479481262, guid: a14071656d4841540987f7d987345551, type: 3}
   startRoomId: Start
   startEnteredFrom: 2
   doorInwardOffset: 1
