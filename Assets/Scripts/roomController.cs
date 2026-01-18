@@ -65,21 +65,32 @@ public class roomController : MonoBehaviour
 
 private void Start()
 {
-    // Find shared scene systems once
     var loader = FindFirstObjectByType<RoomLoader>();
-    var router = FindFirstObjectByType<MansionRouter>(); // or MansionRouter_Minimal
+    var router = FindFirstObjectByType<MansionRouter>(); // or your router type
+
+    // Wire doors
+    foreach (var door in GetComponentsInChildren<Door_Debug>(true))
+        door.Initialize(this, loader, router);
 
     // Wire chests
-    foreach (var chest in GetComponentsInChildren<Chest>(true))
-    {
+    var chests = GetComponentsInChildren<Chest>(true);
+
+    foreach (var chest in chests)
         chest.Initialize(this, loader);
-    }
 
-    // Wire doors (use Door, not Door_Debug, unless you're still debugging)
-    foreach (var door in GetComponentsInChildren<Door_Debug>(true))
-
+    // Guarantee: exactly 1 real chest per room (chosen once)
+    if (loader != null)
     {
-        door.Initialize(this, loader, router);
+        var state = loader.GetRoomState(roomId);
+
+        // Pick once
+        if (state.realChestIndex < 0 || state.realChestIndex >= chests.Length)
+            state.realChestIndex = Random.Range(0, chests.Length);
+
+        for (int i = 0; i < chests.Length; i++)
+            chests[i].isMimic = (i != state.realChestIndex);
+
+        Debug.Log($"[roomController] Room '{roomId}' realChestIndex={state.realChestIndex} (total chests={chests.Length})");
     }
 }
 
