@@ -542,7 +542,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4860963897564142593}
-  - component: {fileID: 7951967448271164788}
+  - component: {fileID: 924484660460909515}
   m_Layer: 0
   m_Name: Kitchen
   m_TagString: Untagged
@@ -558,13 +558,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4183465737737167672}
   serializedVersion: 2
-  m_LocalRotation: {x: 1, y: 0, z: 0, w: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.6, y: -1.15, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6269010317934253015}
   - {fileID: 92771762598496504}
+  - {fileID: 8207534783282650395}
   - {fileID: 1950416477598046177}
   - {fileID: 8602088856837877999}
   - {fileID: 2170720538015569639}
@@ -582,8 +583,8 @@ Transform:
   - {fileID: 8617076220456967208}
   - {fileID: 1262578327329737832}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
---- !u!114 &7951967448271164788
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &924484660460909515
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -602,7 +603,7 @@ MonoBehaviour:
   enterFromW: {fileID: 0}
   doorsRoot: {fileID: 0}
   torchesRoot: {fileID: 0}
-  chestsRoot: {fileID: 4244240593175073071}
+  chestsRoot: {fileID: 9162460920762753713, guid: dcd1c7f1a0362864d9da3145ae29a1fe, type: 3}
   keyItemPrefab: {fileID: 5836940840583518204, guid: 7b753138531bc504a90bf8b2ce211174, type: 3}
 --- !u!1 &4244240593175073071
 GameObject:
@@ -1331,6 +1332,37 @@ MonoBehaviour:
   room: {fileID: 0}
   isMimic: 1
   itemSpawnPoint: {fileID: 92771762598496504}
+--- !u!1 &8712502104756795505
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8207534783282650395}
+  m_Layer: 0
+  m_Name: Spawn
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8207534783282650395
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8712502104756795505}
+  serializedVersion: 2
+  m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: 21.3, y: 6.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4860963897564142593}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8942137750587906192
 GameObject:
   m_ObjectHideFlags: 0
