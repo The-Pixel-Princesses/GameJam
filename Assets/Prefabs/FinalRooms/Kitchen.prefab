@@ -159,6 +159,37 @@ MonoBehaviour:
   room: {fileID: 0}
   isMimic: 1
   itemSpawnPoint: {fileID: 8602088856837877999}
+--- !u!1 &952656886318281430
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3977887214599473024}
+  m_Layer: 0
+  m_Name: S
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3977887214599473024
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 952656886318281430}
+  serializedVersion: 2
+  m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: -51.7, y: 55.4, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4860963897564142593}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1205959212758244002
 GameObject:
   m_ObjectHideFlags: 0
@@ -566,6 +597,9 @@ Transform:
   - {fileID: 6269010317934253015}
   - {fileID: 92771762598496504}
   - {fileID: 8207534783282650395}
+  - {fileID: 3839280066116447189}
+  - {fileID: 3977887214599473024}
+  - {fileID: 6023018017318905954}
   - {fileID: 1950416477598046177}
   - {fileID: 8602088856837877999}
   - {fileID: 2170720538015569639}
@@ -597,13 +631,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::roomController
   roomId: Kitchen
-  enterFromN: {fileID: 0}
-  enterFromE: {fileID: 0}
-  enterFromS: {fileID: 0}
-  enterFromW: {fileID: 0}
+  enterFromN: {fileID: 8207534783282650395}
+  enterFromE: {fileID: 3839280066116447189}
+  enterFromS: {fileID: 3977887214599473024}
+  enterFromW: {fileID: 6023018017318905954}
   doorsRoot: {fileID: 0}
   torchesRoot: {fileID: 0}
-  chestsRoot: {fileID: 9162460920762753713, guid: dcd1c7f1a0362864d9da3145ae29a1fe, type: 3}
+  chestsRoot: {fileID: 4244240593175073071}
   keyItemPrefab: {fileID: 5836940840583518204, guid: 7b753138531bc504a90bf8b2ce211174, type: 3}
 --- !u!1 &4244240593175073071
 GameObject:
@@ -830,6 +864,37 @@ MonoBehaviour:
   room: {fileID: 0}
   isMimic: 1
   itemSpawnPoint: {fileID: 1950416477598046177}
+--- !u!1 &5431890455465188002
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3839280066116447189}
+  m_Layer: 0
+  m_Name: E
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3839280066116447189
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5431890455465188002}
+  serializedVersion: 2
+  m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: 60.6, y: 2, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4860963897564142593}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5928138943494615634
 GameObject:
   m_ObjectHideFlags: 0
@@ -1173,6 +1238,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4860963897564142593}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8322678086097680688
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6023018017318905954}
+  m_Layer: 0
+  m_Name: W
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6023018017318905954
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8322678086097680688}
+  serializedVersion: 2
+  m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
+  m_LocalPosition: {x: -2.2, y: -63.7, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4860963897564142593}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8374331567088937493
 GameObject:
   m_ObjectHideFlags: 0
@@ -1342,7 +1438,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8207534783282650395}
   m_Layer: 0
-  m_Name: Spawn
+  m_Name: N
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1357,7 +1453,7 @@ Transform:
   m_GameObject: {fileID: 8712502104756795505}
   serializedVersion: 2
   m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 21.3, y: 6.5, z: 0}
+  m_LocalPosition: {x: 57.8, y: 61.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

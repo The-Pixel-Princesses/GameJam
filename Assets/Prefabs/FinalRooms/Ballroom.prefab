@@ -662,13 +662,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::roomController
   roomId: Ballroom
-  enterFromN: {fileID: 0}
-  enterFromE: {fileID: 0}
-  enterFromS: {fileID: 0}
-  enterFromW: {fileID: 0}
+  enterFromN: {fileID: 7019293651848825853}
+  enterFromE: {fileID: 8827061181037784238}
+  enterFromS: {fileID: 976902893355299316}
+  enterFromW: {fileID: 1622423008649142147}
   doorsRoot: {fileID: 0}
   torchesRoot: {fileID: 0}
-  chestsRoot: {fileID: 9162460920762753713, guid: dcd1c7f1a0362864d9da3145ae29a1fe, type: 3}
+  chestsRoot: {fileID: 4244240593175073071}
   keyItemPrefab: {fileID: 5836940840583518204, guid: 7b753138531bc504a90bf8b2ce211174, type: 3}
 --- !u!1 &4244240593175073071
 GameObject:
@@ -905,7 +905,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7019293651848825853}
   m_Layer: 0
-  m_Name: Spawn
+  m_Name: N
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -920,7 +920,7 @@ Transform:
   m_GameObject: {fileID: 5180245666538261744}
   serializedVersion: 2
   m_LocalRotation: {x: -1, y: -0, z: -0, w: 0}
-  m_LocalPosition: {x: 26.9, y: 9.4, z: 0}
+  m_LocalPosition: {x: -11.8, y: -59.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
