@@ -154,11 +154,10 @@ MonoBehaviour:
   chestId: 4
   closedSprite: {fileID: -6191958229592508617, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
   openSprite: {fileID: 5966800672889261488, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
-  player: {fileID: 0}
   interactDistance: 3
+  itemSpawnPoint: {fileID: 1993460701162098773}
   room: {fileID: 0}
   isMimic: 1
-  itemSpawnPoint: {fileID: 1993460701162098773}
 --- !u!1 &873929601589042183
 GameObject:
   m_ObjectHideFlags: 0
@@ -501,11 +500,10 @@ MonoBehaviour:
   chestId: 2
   closedSprite: {fileID: -6191958229592508617, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
   openSprite: {fileID: 5966800672889261488, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
-  player: {fileID: 0}
   interactDistance: 3
+  itemSpawnPoint: {fileID: 5819741586020694835}
   room: {fileID: 0}
   isMimic: 1
-  itemSpawnPoint: {fileID: 5819741586020694835}
 --- !u!1 &4425120895917771658
 GameObject:
   m_ObjectHideFlags: 0
@@ -691,11 +689,10 @@ MonoBehaviour:
   chestId: 1
   closedSprite: {fileID: -6191958229592508617, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
   openSprite: {fileID: 5966800672889261488, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
-  player: {fileID: 0}
   interactDistance: 3
+  itemSpawnPoint: {fileID: 3452292463030677155}
   room: {fileID: 0}
   isMimic: 1
-  itemSpawnPoint: {fileID: 3452292463030677155}
 --- !u!1 &5213477050645034811
 GameObject:
   m_ObjectHideFlags: 0
@@ -881,11 +878,10 @@ MonoBehaviour:
   chestId: 3
   closedSprite: {fileID: -6191958229592508617, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
   openSprite: {fileID: 5966800672889261488, guid: 349c94f63e529dc4c980557ac65c6531, type: 3}
-  player: {fileID: 0}
   interactDistance: 3
+  itemSpawnPoint: {fileID: 8179489858603352784}
   room: {fileID: 0}
   isMimic: 1
-  itemSpawnPoint: {fileID: 8179489858603352784}
 --- !u!1 &5391284485917261605
 GameObject:
   m_ObjectHideFlags: 0
@@ -989,6 +985,7 @@ MonoBehaviour:
   doorEName: Door_E
   doorSName: Door_S
   doorWName: Door_W
+  keyItemPrefab: {fileID: 5836940840583518204, guid: 7b753138531bc504a90bf8b2ce211174, type: 3}
 --- !u!1 &6191368550642241466
 GameObject:
   m_ObjectHideFlags: 0
