@@ -3388,7 +3388,6 @@ MonoBehaviour:
   fireforce: 10
   shootCooldown: 0.25
   shootTimer: 0.5
-  animator: {fileID: 0}
 --- !u!114 &1596944313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4150,15 +4149,15 @@ MonoBehaviour:
   gridRoot: {fileID: 501716861}
   player: {fileID: 1596944307}
   roomPrefabs:
-  - {fileID: 5451387327189475033, guid: 08dafdbc4f902c64290e8bb0af2e043b, type: 3}
-  - {fileID: 4109137158465955469, guid: 267f8e860639188499424f590ccd6da8, type: 3}
-  - {fileID: 6662772297210539715, guid: 62fbf9c442efb694bbf3fdb5bd7de37e, type: 3}
-  - {fileID: 4291462230791700637, guid: 72605e8157e78ec45af669280b367f8e, type: 3}
-  - {fileID: 4183465737737167672, guid: de2ad67b4c4128b4bab8dc57fb2b7422, type: 3}
-  - {fileID: 2551653001858484330, guid: 4159dc5dbeca9b04eb99505e9b8f763d, type: 3}
-  - {fileID: 759744058381616705, guid: dd4b076595656b349a2889933ecb0a83, type: 3}
-  - {fileID: 8244559890238966171, guid: 81dd8716257c7304cbdf8f34dcea35c7, type: 3}
-  - {fileID: 5593644728479481262, guid: a14071656d4841540987f7d987345551, type: 3}
+  - {fileID: 3986292836240651416, guid: ab82bbc32b11c7e4e8c26e7c1026094b, type: 3}
+  - {fileID: 4405370887495896889, guid: 6543e8c5108eda34291b601f95db4878, type: 3}
+  - {fileID: 4121337690014150307, guid: fb538960238fae647b85e27871699fc0, type: 3}
+  - {fileID: 6236687401830873482, guid: 60a382ce13479454f9fefc106675a043, type: 3}
+  - {fileID: 5713054117370811035, guid: 79d4e3bdc0fb5ea49b6efada4c5191c4, type: 3}
+  - {fileID: 761814577632667318, guid: f4d35fc0731006c4a8f0e3e73518e412, type: 3}
+  - {fileID: 4188398783709208628, guid: 07e6025cf0d39684ebcf8e90f3080350, type: 3}
+  - {fileID: 4577246509031089700, guid: 14b34fb8c89214849ba6910e4d1401a9, type: 3}
+  - {fileID: 5678869882225162629, guid: 3e79b8f946d2be54db97870f51105e70, type: 3}
   startRoomId: Start
   startEnteredFrom: 2
   doorInwardOffset: 1
