@@ -119,11 +119,6 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &7816511 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 617045977953653226, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
-  m_PrefabInstance: {fileID: 583808892840972305}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &43815498
 GameObject:
   m_ObjectHideFlags: 0
@@ -2570,6 +2565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df43d2621b5989b4d82c9e36e9e854cb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  maxHealth: 0
   slider: {fileID: 931848609}
 --- !u!114 &931848609
 MonoBehaviour:
@@ -4803,7 +4799,7 @@ PrefabInstance:
     - target: {fileID: 4703709155579949884, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
       propertyPath: torchOn
       value: 
-      objectReference: {fileID: 7816511}
+      objectReference: {fileID: 0}
     - target: {fileID: 4703709155579949884, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
       propertyPath: onSprite
       value: 
