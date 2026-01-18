@@ -1,31 +1,37 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 public class RoomLoader : MonoBehaviour
 {
-
-    [Header("Scene Grid")]
+ [Header("Scene Grid")]
     public Transform gridRoot;
 
     [Header("Player")]
     public Transform player;
 
-    [Header("Room Prefabs (drag prefab GameObjects here)")]
-    public List<GameObject> roomPrefabs; // drag prefabs here
+    [Header("Room Prefabs (root must have roomController)")]
+    public List<GameObject> roomPrefabs;
 
-    [Header("Debug Clamp (temporary)")]
-    public bool clampPlayerToBounds = true;
-    public Vector2 clampMin = new Vector2(-8f, -4f);
-    public Vector2 clampMax = new Vector2(8f, 4f);
+    [Header("Start Room")]
+    public string startRoomId = "Start";
+    public Direction startEnteredFrom = Direction.S;
+
+    [Header("Spawn Tuning")]
+    public float doorInwardOffset = 1.0f;
+    public int floorSearchRadius = 10;
+    public Vector3 floorCellCenterOffset = new Vector3(0.5f, 0.5f, 0f);
 
     private readonly Dictionary<string, GameObject> _prefabById = new();
-    private readonly Dictionary<string, RoomState> _stateByRoomId = new();
+    private readonly Dictionary<string, roomController> _instanceByRoomId = new();
 
+    private string _currentRoomId = "";
     private roomController _currentRoom;
 
-    void Awake()
+    private void Awake()
     {
-        // Build lookup: roomId -> prefab GameObject
+        _prefabById.Clear();
+
         foreach (var prefab in roomPrefabs)
         {
             if (prefab == null) continue;
@@ -33,13 +39,13 @@ public class RoomLoader : MonoBehaviour
             var rc = prefab.GetComponent<roomController>();
             if (rc == null)
             {
-                Debug.LogError($"Room prefab '{prefab.name}' is missing roomController on the ROOT object.");
+                Debug.LogError($"[RoomLoader] Prefab '{prefab.name}' missing roomController on ROOT.");
                 continue;
             }
 
-            if (string.IsNullOrEmpty(rc.roomId))
+            if (string.IsNullOrWhiteSpace(rc.roomId))
             {
-                Debug.LogError($"Room prefab '{prefab.name}' has an empty roomId on roomController.");
+                Debug.LogError($"[RoomLoader] Prefab '{prefab.name}' has empty roomId.");
                 continue;
             }
 
@@ -47,118 +53,128 @@ public class RoomLoader : MonoBehaviour
         }
     }
 
-public void LoadRoom(string roomId, Direction enteredFrom)
-{
-    LogPlayerAndCamera("LoadRoom BEGIN");
-
-    // Destroy old room
-    if (_currentRoom != null)
+    private void Start()
     {
-        Debug.Log($"[RoomLoader] Destroying old room '{_currentRoom.roomId}'");
-        Destroy(_currentRoom.gameObject);
-        _currentRoom = null;
+        // Always start by generating the Start room prefab (if nothing is loaded yet)
+        if (string.IsNullOrEmpty(_currentRoomId))
+        {
+            // Optional safety: hide anything manually under Grid (in case you forgot to delete it)
+            HideAllRoomsUnderGrid();
+
+            if (!_prefabById.ContainsKey(startRoomId))
+            {
+                Debug.LogError($"[RoomLoader] startRoomId '{startRoomId}' not found in RoomLoader.roomPrefabs list.");
+                return;
+            }
+
+            LoadRoom(startRoomId, startEnteredFrom);
+        }
     }
 
-    // IMPORTANT: prefab is defined HERE
-    if (!_prefabById.TryGetValue(roomId, out var prefab) || prefab == null)
+    public string GetCurrentRoomId() => _currentRoomId;
+
+    public void LoadRoom(string roomId) => LoadRoom(roomId, Direction.S);
+
+    public void LoadRoom(string roomId, Direction enteredFrom)
     {
-        Debug.LogError($"[RoomLoader] No room prefab registered for roomId '{roomId}'.");
-        return;
+        if (gridRoot == null)
+        {
+            Debug.LogError("[RoomLoader] gridRoot not assigned.");
+            return;
+        }
+
+        // Hard guarantee: only one room visible at a time
+        HideAllRoomsUnderGrid();
+
+        // Get or create target room instance
+        if (!_instanceByRoomId.TryGetValue(roomId, out var targetRoom) || targetRoom == null)
+        {
+            if (!_prefabById.TryGetValue(roomId, out var prefab) || prefab == null)
+            {
+                Debug.LogError($"[RoomLoader] No prefab registered for roomId '{roomId}'.");
+                return;
+            }
+
+            GameObject instance = Instantiate(prefab, gridRoot);
+            instance.transform.localPosition = Vector3.zero;
+            instance.transform.localRotation = Quaternion.identity;
+            instance.transform.localScale = Vector3.one;
+
+            targetRoom = instance.GetComponent<roomController>();
+            if (targetRoom == null)
+            {
+                Debug.LogError($"[RoomLoader] Spawned '{prefab.name}' but missing roomController on root.");
+                Destroy(instance);
+                return;
+            }
+
+            _instanceByRoomId[roomId] = targetRoom;
+        }
+
+        // Show target room
+        targetRoom.gameObject.SetActive(true);
+
+        // Track current
+        _currentRoom = targetRoom;
+        _currentRoomId = roomId;
+
+        // Move player: spawn near the door we entered from, then snap to nearest floor tile
+        if (player != null)
+        {
+            Vector3 desired = ComputeSpawnNearDoor(_currentRoom, enteredFrom);
+            Vector3 snapped = SnapToNearestFloor(_currentRoom.Floor, desired);
+            player.position = new Vector3(snapped.x, snapped.y, player.position.z);
+        }
+
+        Debug.Log($"[RoomLoader] Switched to '{roomId}'. Active instances={_instanceByRoomId.Count}");
     }
 
-    Debug.Log($"[RoomLoader] Loading prefab '{prefab.name}'");
-
-    // Instantiate AFTER prefab exists
-    GameObject instance = Instantiate(prefab, gridRoot);
-
-    instance.transform.localPosition = Vector3.zero;
-    instance.transform.localRotation = Quaternion.identity;
-    instance.transform.localScale = Vector3.one;
-
-    Debug.Log($"[RoomLoader] Spawned instance '{instance.name}' under '{gridRoot.name}'");
-
-    _currentRoom = instance.GetComponent<roomController>();
-    if (_currentRoom == null)
+    private void HideAllRoomsUnderGrid()
     {
-        Debug.LogError($"[RoomLoader] Spawned room '{prefab.name}' but no roomController found.");
-        Destroy(instance);
-        return;
+        if (gridRoot == null) return;
+
+        for (int i = 0; i < gridRoot.childCount; i++)
+        {
+            gridRoot.GetChild(i).gameObject.SetActive(false);
+        }
     }
 
-    // Player placement debug
-    var spawn = _currentRoom.GetEntryPoint(enteredFrom);
-Vector3 target = spawn ? spawn.position : _currentRoom.transform.position;
-
-if (clampPlayerToBounds)
-{
-    target.x = Mathf.Clamp(target.x, clampMin.x, clampMax.x);
-    target.y = Mathf.Clamp(target.y, clampMin.y, clampMax.y);
-}
-
-player.position = new Vector3(target.x, target.y, player.position.z);
-
-    Debug.Log($"[RoomLoader] Spawn point = {(spawn ? spawn.name : "NULL")}");
-
-    LogPlayerAndCamera("Before Player Move");
-
-    if (spawn != null && player != null)
-        player.position = new Vector3(spawn.position.x, spawn.position.y, player.position.z);
-
-    LogPlayerAndCamera("After Player Move");
-
-    StartCoroutine(LogNextFrame());
-}
-
-private System.Collections.IEnumerator LogNextFrame()
-{
-    yield return null; // wait 1 frame
-    LogPlayerAndCamera("1 Frame Later");
-}
-
-public RoomState GetRoomState(string roomId)
-{
-    if (!_stateByRoomId.TryGetValue(roomId, out var state))
+    private Vector3 ComputeSpawnNearDoor(roomController room, Direction enteredFrom)
     {
-        state = new RoomState();
-        _stateByRoomId[roomId] = state;
+        var door = room.GetDoorTransform(enteredFrom);
+        Vector3 basePos = door ? door.position : room.transform.position;
+
+        Vector2 inward = enteredFrom switch
+        {
+            Direction.N => Vector2.down,
+            Direction.S => Vector2.up,
+            Direction.E => Vector2.left,
+            Direction.W => Vector2.right,
+            _ => Vector2.up
+        };
+
+        return basePos + (Vector3)(inward * doorInwardOffset);
     }
-    return state;
-}
 
-    public string GetCurrentRoomId() => _currentRoom != null ? _currentRoom.roomId : "";
+    private Vector3 SnapToNearestFloor(Tilemap floor, Vector3 desiredWorld)
+    {
+        if (floor == null) return desiredWorld;
 
-private void LogPlayerAndCamera(string tag)
-{
-    var cam = Camera.main;
-    Vector3 p = player ? player.position : new Vector3(float.NaN, float.NaN, float.NaN);
-    Vector3 c = cam ? cam.transform.position : new Vector3(float.NaN, float.NaN, float.NaN);
+        Vector3Int startCell = floor.WorldToCell(desiredWorld);
 
-    string pz = player ? player.position.z.ToString("F3") : "null";
-    string cz = cam ? cam.transform.position.z.ToString("F3") : "null";
+        for (int r = 0; r <= floorSearchRadius; r++)
+        {
+            for (int dx = -r; dx <= r; dx++)
+            {
+                for (int dy = -r; dy <= r; dy++)
+                {
+                    var cell = new Vector3Int(startCell.x + dx, startCell.y + dy, startCell.z);
+                    if (floor.HasTile(cell))
+                        return floor.CellToWorld(cell) + floorCellCenterOffset;
+                }
+            }
+        }
 
-    Debug.Log(
-        $"[{tag}] " +
-        $"Player={(player ? player.name : "NULL")} pos={p} z={pz} | " +
-        $"Cam={(cam ? cam.name : "NULL")} pos={c} z={cz}"
-    );
-}
-
-//     void Start()
-// {
-//     // // If a room already exists in the scene, initialize it
-//     // var existingRoom = FindFirstObjectByType<roomController>();
-//     // if (existingRoom != null)
-//     // {
-//     //     _currentRoom = existingRoom;
-
-//     //     var state = GetRoomState(existingRoom.roomId);
-//     //     existingRoom.ApplyState(state);
-
-//     //     // Optional: spawn player at EnterFromS for the first room
-//     //     var spawn = existingRoom.enterFromS;
-//     //     if (spawn != null && player != null)
-//     //         player.position = spawn.position;
-//     }
-// }
-
+        return desiredWorld;
+    }
 }

@@ -1512,7 +1512,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 2135832002}
   - {fileID: 1314787620}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1908,10 +1907,7 @@ MonoBehaviour:
   - Conservatory
   - Patio
   stableRooms: []
-  maxTorchesPerRoom: 4
-  roomLoader: {fileID: 1870198071}
   debugPrintOnStart: 1
-  debugPrintOnReshuffle: 1
 --- !u!4 &727662605
 Transform:
   m_ObjectHideFlags: 0
@@ -2712,63 +2708,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086487687}
   m_CullTransparentMesh: 1
---- !u!1001 &1189892780
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 501716861}
-    m_Modifications:
-    - target: {fileID: 4183465737737167672, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
-      propertyPath: m_Name
-      value: Kitchen
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860963897564142593, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -1.2518
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860963897564142593, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: -0.09159
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860963897564142593, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860963897564142593, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860963897564142593, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860963897564142593, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860963897564142593, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860963897564142593, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860963897564142593, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4860963897564142593, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
 --- !u!1 &1314787619
 GameObject:
   m_ObjectHideFlags: 0
@@ -3199,7 +3138,7 @@ Transform:
   m_GameObject: {fileID: 1596944305}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.84, y: 0.4, z: 0}
+  m_LocalPosition: {x: 3.49, y: 2.22, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1.5386481}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3335,6 +3274,7 @@ MonoBehaviour:
   fireforce: 10
   shootCooldown: 0.25
   shootTimer: 0.5
+  animator: {fileID: 0}
 --- !u!114 &1596944313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3349,6 +3289,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::PlayerHealth
   maxHealth: 10
   healthBar: {fileID: 931848608}
+  respawnPoint: {fileID: 0}
   animator: {fileID: 1596944310}
 --- !u!1 &1628391484
 GameObject:
@@ -3651,6 +3592,7 @@ GameObject:
   - component: {fileID: 1747846004}
   - component: {fileID: 1747846003}
   - component: {fileID: 1747846006}
+  - component: {fileID: 1747846007}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -3776,6 +3718,23 @@ MonoBehaviour:
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
   m_Version: 2
+--- !u!114 &1747846007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1747846002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea864598dab927a4e983316fa7ce9cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraController
+  followSpeed: 2
+  zPerspective: -10
+  minBounds: {x: -20, y: -20}
+  maxBounds: {x: 20, y: 20}
+  target: {fileID: 1596944307}
 --- !u!1 &1820392775
 GameObject:
   m_ObjectHideFlags: 0
@@ -3922,7 +3881,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5552641da8a042347b2f972121623305, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  slider: {fileID: 0}
+  slider: {fileID: 1826152173}
+  maxValue: 10
+  drainRate: 5
+  refillRate: 10
 --- !u!114 &1826152173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4015,6 +3977,11 @@ MonoBehaviour:
   - {fileID: 4183465737737167672, guid: 1d3a302b3e1d61a4f99ba2460b2294ef, type: 3}
   - {fileID: 4183465737737167672, guid: ea174e9655a4a4f4ca02a0e87dbf47f6, type: 3}
   - {fileID: 4183465737737167672, guid: 42fbeea404d402f46b615c49badbe739, type: 3}
+  startRoomId: Start
+  startEnteredFrom: 2
+  doorInwardOffset: 1
+  floorSearchRadius: 10
+  floorCellCenterOffset: {x: 0.5, y: 0.5, z: 0}
 --- !u!4 &1870198072
 Transform:
   m_ObjectHideFlags: 0
@@ -4336,11 +4303,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   damage: 1
---- !u!4 &2135832002 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 4860963897564142593, guid: d3c8243803c93d74ca89bcd67dff4f0a, type: 3}
-  m_PrefabInstance: {fileID: 1189892780}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
