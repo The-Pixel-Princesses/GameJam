@@ -330,7 +330,7 @@ MonoBehaviour:
   onSprite: {fileID: 4791548942556819327, guid: d3cb5257556f8014289a1c6e8b1d0946, type: 3}
   offSprite: {fileID: 3097743895570586354, guid: e39919330b593ad4da6af6a6f128ee68, type: 3}
   player: {fileID: 0}
-  interactDistance: 3
+  interactDistance: 1
 --- !u!61 &6224187475024717184
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -517,7 +517,7 @@ MonoBehaviour:
   onSprite: {fileID: 4791548942556819327, guid: d3cb5257556f8014289a1c6e8b1d0946, type: 3}
   offSprite: {fileID: 3097743895570586354, guid: e39919330b593ad4da6af6a6f128ee68, type: 3}
   player: {fileID: 0}
-  interactDistance: 3
+  interactDistance: 1
 --- !u!61 &9101211446557853582
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1004,7 +1004,7 @@ MonoBehaviour:
   onSprite: {fileID: 4791548942556819327, guid: d3cb5257556f8014289a1c6e8b1d0946, type: 3}
   offSprite: {fileID: 3097743895570586354, guid: e39919330b593ad4da6af6a6f128ee68, type: 3}
   player: {fileID: 0}
-  interactDistance: 3
+  interactDistance: 1
 --- !u!61 &3170240997138833721
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1160,7 +1160,7 @@ MonoBehaviour:
   onSprite: {fileID: 4791548942556819327, guid: d3cb5257556f8014289a1c6e8b1d0946, type: 3}
   offSprite: {fileID: 3097743895570586354, guid: e39919330b593ad4da6af6a6f128ee68, type: 3}
   player: {fileID: 0}
-  interactDistance: 3
+  interactDistance: 1
 --- !u!61 &7979870546279071266
 BoxCollider2D:
   m_ObjectHideFlags: 0
