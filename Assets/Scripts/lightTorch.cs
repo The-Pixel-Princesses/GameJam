@@ -13,7 +13,8 @@ public class TorchLight : MonoBehaviour
 
     [Header("Interaction")]
     public Transform player;
-    public float interactDistance = 3f;
+    public string playerTag = "Player";
+    public float interactDistance = 0.1f;
 
     private Camera mainCam;
     private SpriteRenderer sr;
@@ -22,6 +23,14 @@ public class TorchLight : MonoBehaviour
     {
         sr = GetComponent<SpriteRenderer>();
         mainCam = Camera.main;
+
+        if (player == null)
+        {
+            GameObject p = GameObject.FindGameObjectWithTag(playerTag);
+            if (p != null) player = p.transform;
+            else Debug.LogError($"[TorchLight] Could not find a GameObject with tag '{playerTag}'.");
+        
+    }
 
         if (sr == null)
             Debug.LogError("[TorchLight] Missing SpriteRenderer on the torch object.");
@@ -58,9 +67,12 @@ public class TorchLight : MonoBehaviour
 
     public void Toggle()
     {
-        lightOn = !lightOn;
-        ApplyVisual();
-        Debug.Log($"[TorchLight] {gameObject.name} toggled. Now On={lightOn}");
+        if (!lightOn)
+        {
+            lightOn = !lightOn;
+            ApplyVisual();
+            Debug.Log($"[TorchLight] {gameObject.name} toggled. Now On={lightOn}");
+        }
     }
 
     private void ApplyVisual()

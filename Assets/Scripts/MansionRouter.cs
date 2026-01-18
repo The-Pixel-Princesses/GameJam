@@ -475,6 +475,3 @@ public class MansionRouter : MonoBehaviour, IDestinationProvider
         }
     }
 }
-
-
-
