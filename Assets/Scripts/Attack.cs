@@ -14,7 +14,7 @@ public class Attack : MonoBehaviour
     public float shootCooldown = 0.25f;
     public float shootTimer = 0.5f;
 
-    public Animator animator;
+    //public Animator animator;
 
     // Update is called once per frame
     void Update()
@@ -35,7 +35,7 @@ public class Attack : MonoBehaviour
         if (shootTimer > shootCooldown)
         {
             shootTimer = 0f;
-            animator.SetTrigger("Ranged");
+            //animator.SetTrigger("Ranged");
             GameObject intBullet = Instantiate(bullet, aim.position, aim.rotation);
             intBullet.GetComponent<Rigidbody2D>().AddForce(-aim.up * fireforce, ForceMode2D.Impulse);
             Destroy(intBullet, 2f);
@@ -48,7 +48,7 @@ public class Attack : MonoBehaviour
         {
             Melee.SetActive(true);
             isAttacking = true;
-            animator.SetTrigger("Melee");
+            //animator.SetTrigger("Melee");
         }
     }
 
