@@ -18,6 +18,7 @@ public class roomController : MonoBehaviour
     public Tilemap Floor { get; private set; }
 
     public GameObject keyItemPrefab;
+    public Chest realChest; // The one chest that spawns the key
 
     private Transform _doorN, _doorE, _doorS, _doorW;
 
@@ -73,6 +74,8 @@ private void Start()
     foreach (var chest in GetComponentsInChildren<Chest>(true))
     {
         chest.Initialize(this, loader);
+        // Set the real chest (the one that spawns the key)
+        chest.isMimic = (chest != realChest);
     }
 
     // Wire doors (use Door, not Door_Debug, unless you're still debugging)
